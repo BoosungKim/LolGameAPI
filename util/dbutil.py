@@ -39,5 +39,21 @@ def insert_record(item=dict()):
     conn.close()
 
 
+def get_record(key=0):
+    query = ( 'SELECT * FROM public.test WHERE key={0}' ).format(key)
+    conn = psycopg2.connect('dbname=lol user=postgres')
+    cur = conn.cursor()
+
+    cur.execute(query)
+
+    records = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    return {'key': records[0][0], 'name': records[0][1], 'title': records[0][2]}
+
+
 if __name__ == '__main__':
-    create_table()
+    print(get_record(1))
+

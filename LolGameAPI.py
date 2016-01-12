@@ -64,9 +64,14 @@ def champ_info_to_db():
         dbutil.insert_record(d)
 
 
-# 챔프 아이디로 챔프 이름을 가지고 오려고 하는데, 매 번 DB 에 접근하는거보다는 메모리로 읽어서 하는게 더 좋을 듯
-# 메모리로 가지고 올 때 어떤 방식으로 가지고 올까
-
 if __name__ == '__main__':
-    pp.pprint(get_recent_games('only히야', 1))
+    myid = 'only히야'
+
+    recent_gameinfo = get_recent_games(myid)
+    recent_champid = [each_game['championId'] for each_game in recent_gameinfo]
+    recent_champname = lambda x: dbutil.get_record(x), recent_champid
+#######################
+    print(recent_champname)
+
+
     pass
