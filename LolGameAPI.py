@@ -69,9 +69,9 @@ if __name__ == '__main__':
 
     recent_gameinfo = get_recent_games(myid)
     recent_champid = [each_game['championId'] for each_game in recent_gameinfo]
-    recent_champname = lambda x: dbutil.get_record(x), recent_champid
-#######################
-    print(recent_champname)
+    recent_champinfo = list(map(lambda x: dbutil.get_record(x), recent_champid))
+    recent_champname = [each_info['name'] for each_info in recent_champinfo]
 
+    print(recent_champname)
 
     pass
