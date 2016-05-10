@@ -73,5 +73,5 @@ if __name__ == '__main__':
     recent_champname = [each_info['name'] for each_info in recent_champinfo]
 
     print(recent_champname)
-
+    pp.pprint(recent_gameinfo)
     pass
